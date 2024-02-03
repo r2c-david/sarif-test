@@ -6,14 +6,11 @@ on:
     - main
     - master
     paths:
-    - .github/workflows/semgrep.yml
-  schedule:
-  # random HH:MM to avoid a load spike on GitHub Actions at 00:00
-  - cron: 5 20 * * *
-name: Semgrep
+    - output.sarif
+name: upload sarif
 jobs:
   semgrep:
-    name: semgrep/ci
+    name: upload-sarif
     runs-on: ubuntu-20.04
     env:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
